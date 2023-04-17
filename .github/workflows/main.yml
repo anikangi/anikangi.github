@@ -1,0 +1,18 @@
+stages:
+  - build
+  - lighthouse
+
+build:
+  script:
+
+lighthouse:
+  stage: lighthouse
+  script:
+    - npm install -g lighthouse
+    - node lighthouse_script.js
+  artifacts:
+    paths:
+      - lighthouse-report.json
+  only:
+    changes:
+      - build/index.html
